@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles.css">
+    <title>My test page</title>
+  </head>
+  <body>
+    <!-- <form></form> Tag:
+      This element formally defines a form. It's a container element, but specifically for containing forms 
+      - The action attribute defines the location (URL) where the form's collected data should be sent when it is submitted.
+      - The method attribute defines which HTTP method to send the data with (usually get or post).
+    -->
+    <form action="/" method="post">
+      <ul>
+        <li>
+          <!-- Note the use of the for attribute on all <label> elements, which takes as its value the id of the form control with which it is associated — this is how you associate a form control with its label. -->
+          <label for="name">Name:</label>
+          <input type="text" name="user_name" id="name"  />
+        </li>
+        <li>
+          <label for="mail">Email:</label>
+          <input type="email" name="user_mail" id="mail" />
+        </li>
+        <li>
+          <label for="msg">Message:</label>
+          <textarea name="user_msg" id="msg"></textarea>
+        </li>
+        <li class="button">
+          <button type="submit">Send you message</button>
+        </li>
+        
+        
+        
+        
+        
+        
+
+      </ul>
+    </form>
+  </body>
+</html>
