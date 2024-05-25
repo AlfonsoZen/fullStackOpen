@@ -1,59 +1,53 @@
-import { useState } from 'react'
+import { useState } from "react"
+
+const Display = ({ counter }) => <div>{counter}</div>
+
+const Button = ({ onClick, text }) => <button onClick={onClick}>{text}</button>
+
+const History = ({allClicks}) => {
+  if (allClicks.length) {
+    return (
+      <p>{allClicks.join(' - ')}</p>
+    )
+  }
+
+  console.log(allClicks.length);
+  return (
+    <p>The app starts when you click something</p>
+  )
+}
+
+
 const App = () => {
   const [left, setLeft] = useState(0);
   const [right, setRight] = useState(0);
-  const [allClicks, setAllClicks] = useState([]);
-  const [total, setTotal] = useState(0);
+  const [allClicks, setAll] = useState([]);
 
-  const handleLeftClick = async () => {
-    setAllClicks(allClicks.concat('L'));
-    const newLeft = left + 1
+  const handleLeft = () => {
+    const newLeft = left + 1;
     setLeft(newLeft);
-    setTotal(newLeft + right);
-  };
 
-  const handleRightClick = () => {
-    setAllClicks(allClicks.concat('R'));
-    setRight(right + 1);
-    setTotal(left + right);
+    setAll( allClicks.concat('L') );
+  }
+
+  const handleRight = () => {
+    const newRight = right + 1;
+    setRight(newRight);
+
+    setAll( allClicks.concat('R') );
   }
 
   return (
     <div>
-      {left}
-      <Button 
-        handleClick={handleLeftClick} 
-        message='left'
-      />
-      <Button 
-        handleClick={handleRightClick} 
-        message='right'
-      />
-      {right}
-      <History allClicks={allClicks} />
+      <Display counter={left}/>
+      <Button onClick={handleLeft} text='left'/>    
+
+      <Button onClick={handleRight} text='right'/>    
+      <Display counter={right}/>
+
+      <History allClicks={allClicks}/>
     </div>
   )
 }
 
-const History = (props) => {
-  if (props.allClicks.length === 0) {
-    return (
-      <div>
-        the app is used by pressing the buttons
-      </div>
-    )
-  }
-  return (
-    <div>
-      button press history: {props.allClicks.join(' ')}
-    </div>
-  )
-}
-
-const Button = ({ handleClick, message }) => (
-  <button onClick={handleClick}>
-    {message}
-  </button>
-)
-  
-export default App
+export default App;
